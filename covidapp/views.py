@@ -30,6 +30,9 @@ def helloword(request):
 		context={'selectedcountry':selectedcountry,'list':list,'new':new,'active':active,'critical':critical,'recovered':recovered,'deaths':deaths,'total':total}
 		return render(request,'hello.html',context)
 	
-	
+	list=[]
+	noresults=int(response['results'])
+	for x in range(0,noresults):
+		list.append(response['response'][x]['country'])
 	context={'list':list}
 	return render(request,'hello.html',context)
